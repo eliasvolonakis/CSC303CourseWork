@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\usepackage{tikz}
+\usepackage[margin=0.8in]{geometry}
+\setlength{\parskip}{1em}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\usepackage[ruled]{algorithm2e}
+\setlength{\algotitleheightrule}{0pt}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\title{CSC303 Assignment 3}
+\author{Elias Volonakis, 1003936789}
+
+
+\begin{document}
+
+\maketitle
+
+\section{}
+Recall from the textbook the Nash Bargaining solution as follows: When $A$ and $B$ negotiate over splitting a dollar, with an outside option of $x$ for $A$ and an outside option of $y$ for $B$, such that $x + y \leq 1$. The Nash Bargaining solution is that $A$ gets $\frac{x+1-y}{2}$ and $B$ gets $\frac{y+1-x}{2}$. In such a case, the Nash Bargaining solution is fulfilled as required. 
+\subsection{}
+Consider a 6 node path graph labeled $ABCDEF$, in which exchanges occur between $AB, CD, EF$. In such a case, nodes $ABCDEF$ must be labeled $\frac{1}{4}, \frac{3}{4}, \frac{2}{4}, \frac{2}{4}, \frac{3}{4}, \frac{1}{4}$, respectively. Here, we see that the Nash Bargaining solution is satisfied for every pairs which exchange. This solution is not the only stable solution. The labeling 1,0,1,0,1,0 is also stable, albeit not following the Nash Bargaining solution. Accordingly, there are other stable solutions than the provided solution above. 
+\subsection{}
+Consider a 5 node path graph labeled $ABCDE$, in which exchanges occur between $AB, DE$. In such a case, nodes $ABCDE$ must be labeled 0,1,0,1,0 respectively. Here, we see that the Nash Bargaining solution is satisfied for every pairs which exchange. In particular:
+\\
+\\
+$A$ gets 0, since that is $\frac{0+1-1}{2} = 0$. $B$ gets 1, since that is $\frac{0+1-0}{2} = 1$. $C$ gets 0, since that is $\frac{0+1-1}{2} = 0$. $D$ gets 1, since that is $\frac{0+1-0}{2} = 1$. $E$ gets 0, since that is  $\frac{0+1-1}{2} = 0$. 
+\\
+\\
+This solution is not the only stable one. Consider the same path graph labeled 0,1,0,1,0 where exchanges occur between $AB, CD$. This solution does not satisfy the Nash Bargaining solution, but it is stable, as required. Hence, there are other stable solutions than the provided solution above. 
+
+\newpage
+\section{}
+\subsection{}
+The matching is unstable. In the provided matching we may observe that $(B, E)$. The reason being $E$ prefers $B$ over $A$, but is currently paired with $A$. As well, $B$ prefers $E$ over $F$, but is currently paired with $F$
+
+\subsection{}
+There is only one round of FPDA, since women $A, B, C$ all have different preferences for partners. We may describe the round as follows, where $P_w$ is the set of woman $w's$ preference. 
+\\
+\\
+Round 1: Every woman proposes to their highest preferences. That yields $P_A : E, P_B : D, P_C : F$. Since all men are not engaged, they can accept all proposals so we have the matchings, \\ $A : E, B : D, C : F$. Since all women are engaged, the algorithm terminates. 
+\subsection{}
+There will be 2 rounds since man $D$ and $F$ both have woman $A$ as their first preference. We may describe first round as follows, where $P_m$ is the set of man $m's$ preference.
+\\
+\\
+Round 1: Every man proposes to their highest preferences. That yields $P_D : A, P_E : B, P_F : A$. $A$ will accept $D$ over $F$ since $A$ prefers $D$ over $F$ in her own preferences. So we have the set of engagements $D : A, E : B$. 
+\\
+\\
+Round 2: Person $F$ needs to propose and will propose to woman $C$. Then we have $P_F = C$. After $C$ accepts the proposal we have a full set of matchings, $D:A, E:B, F:C$. Since all men are engaged, the algorithm terminates. 
+
+\newpage
+\section{}
+\subsection{}
+We require $x = 500$ and $y = 500$ for the Nash Equilibrium of the traffic network. We may justify this by observing that $y = 1000 - x$. Then, $x$ drivers will use the route $A-C-B$ and $1000 - x$ drivers use $A-D-B$. $x = 500$ must then be true so the  travel times of both routes is equal and one route will not be better than the other. 
+\subsection{}
+At equilibrium, with the new road $C-D$, every driver will use $C-D$. As a result, the travel time for every driver will necessarily be $\frac{1000}{100} + 0 + \frac{1000}{100} = 20.$ Then necessarily, we have $x = y = 1000$.
+\subsection{}
+From part b we see that $A-C$ and $D-B$ are preferred since their travel times are both $\frac{1000}{100} = 10$. Now since the travel time of $A-D$ and $C-D$ have been decreased to 5, routes $A-C$ and $D-B$ are no longer favourable. Instead, drivers will use $A-D-C-B$ to have a resulting travel time of 10. That said, we get $x = 0$ and $y = 0$. If the government closed the road $C-D$, then the only routes possible would be $A-C-D$ and $A-D-B$. Since not one of these routes is better than another, drivers will be equally distributed between both routes, giving $x = 500$ and $y = 500$. Then to find the total cost of travel, we have $\frac{500}{100} + 2(5) + \frac{500}{100} = 20$. 
+
+
+\end{document}
